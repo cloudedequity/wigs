@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlentiMeat WIG Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to the external CSS file from the /static path -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+
+    <div id="app-container" class="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 text-gray-800 dark:text-gray-200">
+        
+        <header class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">PlentiMeat</h1>
+            <p class="text-indigo-600 dark:text-indigo-400">Departmental WIG Tracker</p>
+        </header>
+
+        <nav class="flex space-x-1 rounded-lg bg-gray-200 dark:bg-gray-700 p-1 mb-6">
+            <button id="tab-dashboard" class="w-full py-2.5 text-sm font-medium leading-5 rounded-lg tab-active">Current Week</button>
+            <button id="tab-history" class="w-full py-2.5 text-sm font-medium leading-5 rounded-lg tab-inactive">History</button>
+        </nav>
+
+        <main>
+            <!-- Dashboard View -->
+            <div id="view-dashboard">
+                <div class="mb-6">
+                    <label for="department-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select Department</label>
+                    <select id="department-select" class="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"></select>
+                </div>
+                <div id="dashboard-content">
+                    <!-- Content will be injected here by JS -->
+                </div>
+            </div>
+
+            <!-- History View -->
+            <div id="view-history" class="hidden">
+                 <!-- Content will be injected here by JS -->
+            </div>
+        </main>
+        
+        <footer class="mt-8 text-center text-xs text-gray-500 dark:text-gray-400">
+            <p>Week ID: <span id="footer-week-id"></span></p>
+        </footer>
+
+    </div>
+
+    <!-- Modal for WIG Details -->
+    <div id="wig-details-modal" class="modal fixed inset-0 bg-black bg-opacity-50 justify-center items-center p-4 z-50">
+        <div id="modal-content" class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-6">
+            <!-- Modal content will be injected here -->
+        </div>
+    </div>
+
+    <!-- Inject Firebase config from the server -->
+    <script>
+        const firebaseConfig = <%- firebaseConfig %>;
+    </script>
+    
+    <!-- Link to the external client-side JavaScript file from the /static path -->
+    <script type="module" src="/static/js/client.js"></script>
+</body>
+</html>
